@@ -2,76 +2,76 @@
     {
         "fileName": "1.jpg",
         "title": "白羊座",
-        "description": "白羊座"
+        "desc": "白羊座"
     },
     {
         "fileName": "2.jpg",
         "title": "处女座",
-        "description": "处女座"
+        "desc": "处女座"
     },
     {
         "fileName": "3.jpg",
         "title": "金牛座",
-        "description": "金牛座"
+        "desc": "金牛座"
     },
     {
         "fileName": "4.jpg",
         "title": "巨蟹座",
-        "description": "巨蟹座"
+        "desc": "巨蟹座"
     },
     {
         "fileName": "5.jpg",
         "title": "摩羯座",
-        "description": "摩羯座"
+        "desc": "摩羯座"
     },
     {
         "fileName": "6.jpg",
         "title": "射手座",
-        "description": "射手座"
+        "desc": "射手座"
     },
     {
         "fileName": "7.jpg",
         "title": "狮子座",
-        "description": "狮子座"
+        "desc": "狮子座"
     },
     {
         "fileName": "8.jpg",
         "title": "双鱼座",
-        "description": "双鱼座"
+        "desc": "双鱼座"
     },
     {
         "fileName": "9.jpg",
         "title": "双子座",
-        "description": "双子座"
+        "desc": "双子座"
     },
     {
         "fileName": "10.jpg",
         "title": "水瓶座",
-        "description": "水瓶座"
+        "desc": "水瓶座"
     },
     {
         "fileName": "11.jpg",
         "title": "天秤座",
-        "description": "天秤座"
+        "desc": "天秤座"
     },
     {
         "fileName": "12.jpg",
         "title": "天蝎座",
-        "description": "天蝎座"
+        "desc": "天蝎座"
     },
     {
         "fileName": "13.jpg",
         "title": "本姑娘天秤座",
-        "description": "本姑娘天秤座"
+        "desc": "本姑娘天秤座"
     },
     {
         "fileName": "14.jpg",
         "title": "本姑娘天蝎座",
-        "description": "本姑娘天蝎座"
+        "desc": "本姑娘天蝎座"
     },
     {
         "fileName": "15.jpg",
         "title": "本姑娘处女座",
-        "description": "本姑娘处女座"
+        "desc": "本姑娘处女座"
     }
 ]
