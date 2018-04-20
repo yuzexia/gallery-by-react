@@ -24,12 +24,25 @@ let getRangeRandom = (low, high) => {
   return Math.ceil(Math.random() * (high - low) + low);
 }
 
+/**
+ * 设置0~30度之间的一个任意正负值
+ */
+let get30DegRandom = () => {
+  return ((Math.random() > 0.5 ? '' : '-') + Math.ceil(Math.random() * 30));
+}
+
 class ImgFigure extends React.Component {
   render() {
     var styleObj = {};
     // 如果props属性中指定了这张图片的位置，则使用
     if (this.props.arrange.pos) {
       styleObj = this.props.arrange.pos;
+    }
+    // 如果旋转角度有值并且不为0
+    if (this.props.arrange.rotate) {
+      (['Webkit', 'Moz', 'Ms', '']).forEach((item) => {
+        styleObj[`${item}Transform`] = `rotate(${this.props.arrange.rotate}deg)`;
+      })
     }
     return (
       <figure className="img-figure" style={styleObj}>
@@ -66,10 +79,11 @@ class AppComponent extends React.Component {
     this.state = {
       imgsArrangeArr: [
         {
-          pos: {
+         /*  pos: {
             top: '0',
             left: '0'
-          }
+          },
+          rotate: 0 // 设置旋转角度 */
         }
       ]
     }
@@ -103,6 +117,9 @@ class AppComponent extends React.Component {
 
     // 首先居中centerIndex的图片
     imgsArrangeCenterArr[0].pos = centerPos;
+    // 居中的centerIndex的图片不需要旋转
+    imgsArrangeCenterArr[0].rotate = 0;
+
 
     // 取出要布局上侧的图片的状态信息
     topImgSpliceIndex = Math.ceil(Math.random() * (imgsArrangeArr.length - topImgNum));
@@ -110,9 +127,12 @@ class AppComponent extends React.Component {
 
     // 布局上侧的图片
     imgsArrangeTopArr.forEach((item, index) => {
-      imgsArrangeTopArr[index].pos = {
-        top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
-        left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+      imgsArrangeTopArr[index] = {
+        pos : {
+          top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
+          left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+        },
+        rotate: get30DegRandom()
       }
       console.log('%c:::imgsArrangeTopArr', 'background:red;font-size:30px', index, imgsArrangeTopArr[index])
     })
@@ -126,11 +146,14 @@ class AppComponent extends React.Component {
       } else {
         hPosRangeLORX = hPosRangeRightSecX;
       }
-      imgsArrangeArr[i].pos = {
-        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
-        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+      imgsArrangeArr[i] = {
+        pos: {
+          top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+          left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+        },
+        rotate: get30DegRandom()
       }
-      console.log('%c:::imgsArrangeArr', 'background:red;font-size:30px', hPosRangeY[0], hPosRangeY[1])
+      console.log('%c:::imgsArrangeArr', 'background:red;font-size:30px', imgsArrangeArr[i])
     }
 
     if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
@@ -193,7 +216,8 @@ class AppComponent extends React.Component {
           pos: {
             left: 0,
             top: 0
-          }
+          },
+          rotate: 0
         }
       }
       imgFigures.push(<ImgFigure data={item} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]}/>)
