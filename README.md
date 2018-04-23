@@ -20,6 +20,7 @@ yo react-webpack gallery-by-react
 ## 启动
 
 ```javascript
+npm run start
 npm run serve
 ```
 
