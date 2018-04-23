@@ -58,8 +58,8 @@ class ImgFigure extends React.Component {
     }
     // 如果旋转角度有值并且不为0,添加旋转角度
     if (this.props.arrange.rotate) {
-      (['Webkit', 'Moz', 'Ms', '']).forEach((item) => {
-        styleObj[`${item}Transform`] = `rotate(${this.props.arrange.rotate}deg)`;
+      (['WebkitTransform', 'MozTransform', 'msTransform', 'transform']).forEach((item) => {
+        styleObj[item] = `rotate(${this.props.arrange.rotate}deg)`;
       })
     }
     // 设置居中图片的z-index值
@@ -316,8 +316,8 @@ class AppComponent extends React.Component {
           isCenter: false
         }
       }
-      imgFigures.push(<ImgFigure data={item} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />)
-      controllerUnits.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
+      imgFigures.push(<ImgFigure key={index} data={item} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />)
+      controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
     });
 
     return (

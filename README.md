@@ -19,7 +19,7 @@ yo react-webpack gallery-by-react
 
 ## 启动
 
-```node
+```javascript
 npm run serve
 ```
 
@@ -41,4 +41,10 @@ class ComponentName extends React.Component{
 ```
 ```javascript
 let targetNode = ReactDOM.findDOMNode(this.refs.nodeName);
+```
+
+## 提交到github的demo预览页面
+ 
+```
+git subtree push --prefix=dist origin gh-pages
 ```
