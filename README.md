@@ -17,6 +17,13 @@ yo react-webpack gallery-by-react
 
 > ES6 + React + webpack
 
+## 启动
+
+```node
+npm run serve
+```
+
+
 ## React创建组件方式的改变
 
 ```javascript

@@ -85,6 +85,37 @@ class ImgFigure extends React.Component {
   }
 }
 
+// 控制组件
+class ControllerUnit extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e) {
+    // 如果点击的是当前正在选中的按钮，翻转图片，否则将对应的图片居中
+    if (this.props.arrange.isCenter) {
+      this.props.inverse();
+    } else {
+      this.props.center();
+    }
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  render() {
+    var controllerUnitClassName = 'controller-unit';
+    // 如果对应的是居中图片，显示控制按钮的居中态
+    if (this.props.arrange.isCenter) {
+      controllerUnitClassName += ' is-center';
+      if (this.props.arrange.isInverse) {
+        controllerUnitClassName += ' is-inverse';
+      }
+    }
+    return (
+      <span className={controllerUnitClassName} onClick={this.handleClick}></span>
+    )
+  }
+}
+
 class AppComponent extends React.Component {
   
   constructor(props) {
@@ -154,7 +185,7 @@ class AppComponent extends React.Component {
     let vPosRangeX = vPosRange.x;
 
     let imgsArrangeTopArr = []
-    let topImgNum = Math.ceil(Math.random() * 2); //上侧区域去1个或者不取
+    let topImgNum = Math.floor(Math.random() * 2); //上侧区域去1个或者不取
     // console.log('topImgNum:', topImgNum);
     let topImgSpliceIndex = 0;
 
@@ -205,6 +236,9 @@ class AppComponent extends React.Component {
       }
       // console.log('%c:::imgsArrangeArr', 'background:red;font-size:30px', imgsArrangeArr[i])
     }
+
+    // debugger调试
+    // debugger;
 
     if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
       imgsArrangeArr.splice(topImgSpliceIndex, 0, imgsArrangeTopArr[0]);
@@ -283,6 +317,7 @@ class AppComponent extends React.Component {
         }
       }
       imgFigures.push(<ImgFigure data={item} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />)
+      controllerUnits.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
     });
 
     return (
